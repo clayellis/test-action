@@ -1,22 +1,7 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
 const env = process.env;
 
-try {
-  for (const key in env) {
-    if (Object.hasOwnProperty.call(env, key)) {
-      console.log(`${key}: ${env[key]}`);
-    }
-  }
-  
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-} catch (error) {
-  core.setFailed(error.message);
+console.log(`start`);
+for (const key in env) {
+    console.log(`${key}: ${env[key]}`);
 }
+console.log(`end`);
