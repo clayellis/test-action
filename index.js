@@ -1,7 +1,14 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const env = process.env;
 
 try {
+  for (const key in env) {
+    if (Object.hasOwnProperty.call(env, key)) {
+      console.log(`${key}: ${env[key]}`);
+    }
+  }
+  
   // `who-to-greet` input defined in action metadata file
   const nameToGreet = core.getInput('who-to-greet');
   console.log(`Hello ${nameToGreet}!`);
